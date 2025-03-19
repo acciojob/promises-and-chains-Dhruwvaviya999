@@ -11,14 +11,28 @@ submitBtn.addEventListener("click", (e)=>{
 		message.style.display = "block";
 	};
 
-	if(userAge.value > 18){
-		setTimeout(()=>{
-			alert("Welcome, John. You can vote.");
-		}, 4000);
-	} else {
-		setTimeout(()=>{
-			alert("Oh sorry Doe. You aren't old enough.");
-		}, 4000);
-	}
+	// if(userAge.value > 18){
+	// 	setTimeout(()=>{
+	// 		alert("Welcome, John. You can vote.");
+	// 	}, 4000);
+	// } else {
+	// 	setTimeout(()=>{
+	// 		alert("Oh sorry Doe. You aren't old enough.");
+	// 	}, 4000);
+	// }
+
+	const promise = new Promise((res, rej) => {
+		if(userAge.value > 18){
+			setTimeout(()=>{
+				res();
+				alert("Welcome, John. You can vote.");
+			}, 4000);
+		} else {
+			setTimeout(()=>{
+				rej();
+				alert("Oh sorry . You aren't old enough.");
+			}, 4000);
+		}
+	});
 	
 });
